@@ -1,0 +1,16 @@
+Notes for running on your machine and the VPS (very hacky)
+
+Running
+docker build -t portfolio .
+docker run -p 3001:3001 portfolio 
+
+Resetting current instance
+docker ps to find the container id
+docker stop <container id>
+docker rm <container id>
+
+Visit at
+24.144.96.142:3001
+
+Transferring
+rsync -av --exclude 'node_modules' /Users/leopolddorilas/CS/portfolio/ root@24.144.96.142:/root/code/portfolio

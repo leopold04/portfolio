@@ -1,0 +1,23 @@
+---
+title: "My Software Engineering Internship at UKG"
+publishedAt: "2025-11-07"
+summary: "My Summer SWE Internship"
+---
+
+This summer, I interned on the Site Reliability Engineering and DevOps team at UKG, where I spent three months working on projects that improved automation, visibility, and reliability for one of the company’s major products, UKG Ready. I came into the internship hoping to learn more about infrastructure and reliability engineering, and I left having built tools that continue to make a real impact across multiple teams.
+
+![photobooth picture](/photobooth.png)
+
+My main project was to build an automated documentation website that displays detailed environment information for all of our development pods across three global regions. Before this project existed, environment data like VM IPs, service details, and deployment history were stored manually on a Confluence page. Updates were infrequent and often incorrect, which made it difficult for engineers to trust the information. My goal was to replace this manual process with an automated, accurate, and visually appealing documentation portal.
+
+I got the project after asking one of the principal architects on my team if I could help with some of the ongoing Linux migration work. He told me there wasn’t much I could contribute there, but he mentioned another idea he hadn’t had time to pursue: a documentation website for our environments. I jumped at the opportunity, and from there, the project became mine to design and build from the ground up.
+
+I wrote a Python script that pulls environment data directly from Google Cloud through Terraform outputs, then uses Jinja2 templates to render Markdown documentation automatically. The website itself was built using Docusaurus with TypeScript and React to match UKG’s branding and design style. I created pages for all fifteen development environments across three regions, complete with deployment details, Google Cloud project information, and direct links to associated resources. Once everything was in place, I automated the entire workflow with a GitHub Action that runs the script, rebuilds the site, and deploys it to GitHub Pages so that updates are reflected automatically on every push.
+
+This was my favorite project of the summer because it gave me the freedom to choose my own tools and the responsibility to build something from scratch that multiple teams would actually use. It tied together many of the skills I picked up throughout the internship, which include working with Terraform, Bash, and Google Cloud while also teaching me new ones like continuous integration with GitHub Actions. The final result is a self-updating documentation portal that now serves as the single source of truth for environment information across our SRE, DevOps, and Platform teams.
+
+Another project I worked on was a self-healing memory management script for Hazelcast, the in-memory data grid our team relies on for job processing. I wrote a Bash script that monitors system and JVM heap memory usage and automatically restarts the Hazelcast service if memory consumption exceeds a certain threshold. Since our Linux virtual machines are distributed globally, I also had to account for time zone differences so that restarts would happen at local midnight in each region. This script now runs automatically through cron, freeing memory and preventing service instability before it becomes a problem.
+
+I also tackled a reliability issue with our tax calculation service, which runs as a third-party C/C++ binary on Windows VMs. The service had memory leak issues that would gradually degrade performance, so I created a PowerShell script that continuously checks the service’s state and restarts it if it stops or hangs. That project gave me hands-on experience working with Windows Server environments, scheduled tasks, and the packer–Terraform workflow used to build and publish our VM base images to Google Cloud.
+
+Looking back, this internship taught me how to think like a reliability engineer, how to identify weak points in a system, design automation to remove manual effort, and build tools that make life easier for other engineers. I learned how infrastructure, deployment, and monitoring all fit together, and how even small scripts can make a large impact when deployed at scale.

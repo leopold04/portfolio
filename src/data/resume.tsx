@@ -107,11 +107,13 @@ export const DATA = {
     },
     {
       title: "Neuroevolution Snake",
-      href: "https://github.com",
+      href: "https://github.com/leopold04/snake",
       dates: "June 2023 - July 2023",
       active: true,
-      description: "Trained a neural network to play the game of snake",
+      description:
+        "Implemented a neuroevolution algorithm to train neural networks to play Snake using genetic algorithms. ",
       technologies: ["Python", "SQLite", "NumPy"],
+
       links: [
         {
           type: "Source",

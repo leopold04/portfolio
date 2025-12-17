@@ -8,6 +8,7 @@ import { Badge } from "@/components/ui/badge";
 import { DATA } from "@/data/resume";
 import Link from "next/link";
 import Markdown from "react-markdown";
+import Image from "next/image";
 
 const BLUR_FADE_DELAY = 0.04;
 
@@ -35,12 +36,44 @@ export default function Page() {
           </div>
         </div>
       </section>
+      <section id="hiking">
+        <BlurFade delay={BLUR_FADE_DELAY * 2}>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
+            <Link
+              href="/blog/mountains"
+              className="relative w-full aspect-[4/3] rounded-xl overflow-hidden border shadow-lg hover:shadow-xl transition-shadow duration-300 cursor-pointer block"
+            >
+              <Image
+                src="/mountain.JPG"
+                alt="Mountain hiking view"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 50vw"
+                priority
+              />
+            </Link>
+            <Link
+              href="/blog/mountains"
+              className="relative w-full aspect-[4/3] rounded-xl overflow-hidden border shadow-lg hover:shadow-xl transition-shadow duration-300 cursor-pointer block"
+            >
+              <Image
+                src="/trees.JPG"
+                alt="Forest hiking trail"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 50vw"
+                priority
+              />
+            </Link>
+          </div>
+        </BlurFade>
+      </section>
       <section id="about">
         <BlurFade delay={BLUR_FADE_DELAY * 3}>
           <h2 className="text-xl font-bold">About</h2>
         </BlurFade>
         <BlurFade delay={BLUR_FADE_DELAY * 4}>
-          <Markdown className="prose max-w-full text-pretty font-sans text-sm text-muted-foreground dark:prose-invert">
+          <Markdown className="prose max-w-full text-pretty font-sans text-sm text-muted-foreground dark:prose-invert dark:text-foreground">
             {DATA.summary}
           </Markdown>
         </BlurFade>
@@ -110,7 +143,7 @@ export default function Page() {
                   My Projects
                 </div>
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Check out some of my projects</h2>
-                <p className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                <p className="text-muted-foreground dark:text-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                   I&apos;ve worked on a variety of projects, from simple mobile apps to complex full stack web
                   applications.
                 </p>
